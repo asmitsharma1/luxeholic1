@@ -7,6 +7,7 @@ const __dirname = path.dirname(__filename);
 
 const distClientPath = path.join(__dirname, '..', 'dist', 'client');
 const indexHtmlPath = path.join(distClientPath, 'index.html');
+const publicPath = path.join(__dirname, '..', 'public');
 
 // Find the main JS file
 const assetsDir = path.join(distClientPath, 'assets');
@@ -44,3 +45,27 @@ const indexHtml = `<!doctype html>
 
 fs.writeFileSync(indexHtmlPath, indexHtml);
 console.log('✅ Generated index.html for static hosting');
+
+// Copy .htaccess if exists
+const htaccessSrc = path.join(publicPath, '.htaccess');
+const htaccessDest = path.join(distClientPath, '.htaccess');
+if (fs.existsSync(htaccessSrc)) {
+  fs.copyFileSync(htaccessSrc, htaccessDest);
+  console.log('✅ Copied .htaccess to dist/client');
+}
+
+// Copy 404.html if exists
+const notFoundSrc = path.join(publicPath, '404.html');
+const notFoundDest = path.join(distClientPath, '404.html');
+if (fs.existsSync(notFoundSrc)) {
+  fs.copyFileSync(notFoundSrc, notFoundDest);
+  console.log('✅ Copied 404.html to dist/client');
+}
+
+// Copy _redirects if exists
+const redirectsSrc = path.join(publicPath, '_redirects');
+const redirectsDest = path.join(distClientPath, '_redirects');
+if (fs.existsSync(redirectsSrc)) {
+  fs.copyFileSync(redirectsSrc, redirectsDest);
+  console.log('✅ Copied _redirects to dist/client');
+}
