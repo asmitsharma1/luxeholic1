@@ -1,0 +1,33 @@
+{
+  "name": "luxeholic-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Luxeholic luxury e-commerce platform",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "build": "echo 'No build step required for Node.js'"
+  },
+  "keywords": [
+    "luxury",
+    "ecommerce",
+    "api",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.21.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "axios": "^1.7.9",
+    "firebase-admin": "^13.0.2",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "express-rate-limit": "^7.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

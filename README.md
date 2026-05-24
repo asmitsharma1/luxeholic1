@@ -1,11 +1,108 @@
-# 🛍️ Luxeholic - Luxury Brands Retailer
+# 🛍️ Luxeholic - Luxury E-Commerce Platform
 
-> A premium e-commerce platform for luxury fashion brands, powered by Firebase and BrandsGateway API
+Full-stack luxury fashion e-commerce platform with React frontend and Node.js backend.
 
-![React](https://img.shields.io/badge/React-19.2.0-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-blue)
-![Firebase](https://img.shields.io/badge/Firebase-Latest-orange)
-![TanStack Query](https://img.shields.io/badge/TanStack%20Query-5.83.0-red)
+## 📁 Project Structure
+
+```
+luxeholic1/
+├── frontend/          # React TypeScript app
+├── backend/           # Node.js Express API
+└── README.md          # This file
+```
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+
+### 1. Setup Frontend
+
+```bash
+cd frontend
+npm install
+cp .env.example .env
+# Edit .env with your Firebase credentials
+npm start
+```
+
+**Frontend runs on:** http://localhost:3000
+
+### 2. Setup Backend
+
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Edit .env with your API credentials
+npm run dev
+```
+
+**Backend runs on:** http://localhost:5000
+
+## 🔧 Environment Variables
+
+### Frontend (.env)
+```env
+REACT_APP_FIREBASE_API_KEY=your-key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your-domain
+REACT_APP_FIREBASE_PROJECT_ID=your-id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your-bucket
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+REACT_APP_FIREBASE_APP_ID=your-app-id
+REACT_APP_BRANDSGATEWAY_API_KEY=your-key
+REACT_APP_BRANDSGATEWAY_API_SECRET=your-secret
+REACT_APP_API_URL=http://localhost:5000/api
+```
+
+### Backend (.env)
+```env
+PORT=5000
+NODE_ENV=development
+FRONTEND_URL=http://localhost:3000
+FIREBASE_PROJECT_ID=your-project-id
+BRANDSGATEWAY_API_KEY=your-key
+BRANDSGATEWAY_API_SECRET=your-secret
+```
+
+## 📦 Tech Stack
+
+### Frontend
+- ⚛️ React 19 + TypeScript
+- 🎨 TailwindCSS
+- 🧩 Radix UI Components
+- 🔥 Firebase Authentication
+- 📡 TanStack Query
+- 🌐 Axios
+
+### Backend
+- 🟢 Node.js + Express
+- 🔐 Firebase Admin SDK
+- 🛡️ Helmet (Security)
+- 📊 Morgan (Logging)
+- ⚡ Rate Limiting
+- 🌍 CORS
+
+## 🌐 API Endpoints
+
+Base URL: `http://localhost:5000/api`
+
+### Products
+- `GET /products` - List all products
+- `GET /products/:id` - Get single product
+- `GET /products/search?q=query` - Search products
+
+### Orders
+- `POST /orders` - Create new order
+- `GET /orders/:orderId` - Get order details
+- `GET /orders/user/:userId` - Get user orders
+- `PATCH /orders/:orderId/status` - Update order status
+
+### Authentication
+- `POST /auth/verify` - Verify Firebase token
+- `GET /auth/profile/:userId` - Get user profile
+- `PATCH /auth/profile/:userId` - Update user profile
 
 ## ✨ Features
 
@@ -13,316 +110,107 @@
 - Email/Password authentication
 - Google OAuth sign-in
 - Password reset functionality
-- Persistent user sessions
 - Protected routes
 
 ### 🛒 E-Commerce
-- Browse luxury products from top brands
-- Advanced filtering (brand, category, price, size)
-- Product search functionality
-- Shopping cart with persistence
-- Wishlist management
-- Secure checkout process
+- Browse luxury products
+- Advanced filtering (brand, category, price)
+- Product search
+- Shopping cart
+- Wishlist
+- Checkout process
 - Order tracking
 
 ### 🎨 User Experience
-- Responsive design (mobile, tablet, desktop)
+- Responsive design
 - Beautiful UI with Shadcn components
-- Loading states and skeletons
-- Error handling and notifications
-- Smooth animations and transitions
-
-### 🔌 Integrations
-- **Firebase**: Authentication, Firestore Database, Cloud Storage
-- **BrandsGateway API**: Access to 100+ luxury brands
-- **React Query**: Efficient data fetching and caching
-- **Tailwind CSS**: Modern styling
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18+
-- npm or bun
-- Firebase account
-- BrandsGateway business account
-
-### Installation
-
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd luxe-global-style-main
-
-# Install dependencies
-npm install
-
-# Copy environment variables
-cp .env.example .env
-
-# Add your credentials to .env
-# See SETUP.md for detailed instructions
-
-# Run development server
-npm run dev
-```
-
-Visit `http://localhost:3000` 🎉
-
-## 📚 Documentation
-
-| File | Description |
-|------|-------------|
-| [SETUP.md](./SETUP.md) | Complete setup instructions |
-| [INTEGRATION_GUIDE.md](./INTEGRATION_GUIDE.md) | Detailed usage examples |
-| [INTEGRATION_SUMMARY.md](./INTEGRATION_SUMMARY.md) | What's included |
-| [QUICK_REFERENCE.md](./QUICK_REFERENCE.md) | Quick reference card |
-
-## 🏗️ Project Structure
-
-```
-luxe-global-style-main/
-├── src/
-│   ├── components/          # React components
-│   │   ├── AuthModal.tsx    # Authentication UI
-│   │   ├── ProductsShowcase.tsx
-│   │   ├── LuxuryShop.tsx   # Main shop component
-│   │   └── ui/              # Shadcn UI components
-│   ├── hooks/               # Custom React hooks
-│   │   ├── useFirebaseAuth.ts
-│   │   └── useBrandsGateway.ts
-│   ├── integrations/        # Third-party integrations
-│   │   ├── firebase/        # Firebase setup
-│   │   ├── brandsgateway/   # BrandsGateway API
-│   │   └── supabase/        # Supabase (existing)
-│   ├── routes/              # TanStack Router pages
-│   └── lib/                 # Utility functions
-├── public/                  # Static assets
-├── .env                     # Environment variables
-└── package.json
-```
-
-## 🔧 Configuration
-
-### Environment Variables
-
-Create a `.env` file with:
-
-```env
-# Firebase
-VITE_FIREBASE_API_KEY=your-api-key
-VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=your-project-id
-VITE_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
-VITE_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
-VITE_FIREBASE_APP_ID=your-app-id
-VITE_FIREBASE_MEASUREMENT_ID=your-measurement-id
-
-# BrandsGateway
-VITE_BRANDSGATEWAY_API_KEY=your-api-key
-VITE_BRANDSGATEWAY_API_SECRET=your-api-secret
-```
-
-See [SETUP.md](./SETUP.md) for detailed configuration instructions.
-
-## 💻 Usage Examples
-
-### Authentication
-
-```typescript
-import { useFirebaseAuth } from '@/hooks/useFirebaseAuth';
-
-function MyComponent() {
-  const { user, signIn, signUp, signOut } = useFirebaseAuth();
-  
-  const handleLogin = async () => {
-    await signIn('user@example.com', 'password');
-  };
-  
-  return <button onClick={handleLogin}>Sign In</button>;
-}
-```
-
-### Products
-
-```typescript
-import { useProducts } from '@/hooks/useBrandsGateway';
-
-function ProductList() {
-  const { data, isLoading } = useProducts({
-    category: 'bags',
-    brand: 'Gucci',
-    limit: 20
-  });
-  
-  if (isLoading) return <div>Loading...</div>;
-  
-  return (
-    <div>
-      {data?.products.map(product => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
-  );
-}
-```
-
-### Orders
-
-```typescript
-import { useCreateOrder } from '@/hooks/useBrandsGateway';
-
-function Checkout() {
-  const createOrder = useCreateOrder();
-  
-  const handleCheckout = async () => {
-    const order = await createOrder.mutateAsync({
-      items: [...],
-      shipping_address: {...}
-    });
-  };
-}
-```
-
-## 🎨 Components
-
-### Pre-built Components
-
-- `<AuthModal />` - Complete authentication UI
-- `<ProductsShowcase />` - Product catalog with filters
-- `<LuxuryShop />` - Full e-commerce page
-
-### UI Components (Shadcn)
-
-40+ components including:
-- Button, Card, Badge, Dialog
-- Select, Input, Tabs, Alert
-- Skeleton, Separator, and more
-
-## 🧪 Testing
-
-```bash
-# Run linter
-npm run lint
-
-# Format code
-npm run format
-
-# Build for production
-npm run build
-```
-
-## 📦 Tech Stack
-
-- **Frontend**: React 19, TypeScript
-- **Routing**: TanStack Router
-- **State Management**: TanStack Query
-- **Styling**: Tailwind CSS, Shadcn UI
-- **Authentication**: Firebase Auth
-- **Database**: Firebase Firestore
-- **Storage**: Firebase Cloud Storage
-- **API**: BrandsGateway REST API
-- **Build Tool**: Vite
-
-## 🌟 Key Features
-
-### Firebase Integration
-- ✅ Email/Password & Google OAuth
-- ✅ Firestore database operations
-- ✅ Cloud Storage for images
-- ✅ Real-time data sync
-- ✅ Secure authentication
-
-### BrandsGateway Integration
-- ✅ 100+ luxury brands catalog
-- ✅ Real-time inventory
-- ✅ Product search & filters
-- ✅ Order management
-- ✅ Shipping calculation
-- ✅ Order tracking
-
-### Developer Experience
-- ✅ TypeScript for type safety
-- ✅ React Query for data fetching
-- ✅ Custom hooks for reusability
-- ✅ Comprehensive error handling
-- ✅ Loading states everywhere
-- ✅ Responsive design
+- Loading states
+- Error handling
+- Smooth animations
 
 ## 🚢 Deployment
 
-### Build
+### Frontend (Vercel)
 
+1. Push code to GitHub
+2. Go to [vercel.com](https://vercel.com)
+3. Import repository
+4. Configure:
+   - Framework: Create React App
+   - Root Directory: `frontend`
+   - Build Command: `npm run build`
+   - Output Directory: `build`
+5. Add environment variables
+6. Deploy
+
+### Backend (Railway/Render)
+
+1. Push code to GitHub
+2. Go to [railway.app](https://railway.app) or [render.com](https://render.com)
+3. Create new project
+4. Connect repository
+5. Configure:
+   - Root Directory: `backend`
+   - Build Command: `npm install`
+   - Start Command: `npm start`
+6. Add environment variables
+7. Deploy
+
+## 🧪 Testing
+
+### Test Backend
 ```bash
-npm run build
+# Health check
+curl http://localhost:5000/health
+
+# Get products
+curl http://localhost:5000/api/products
 ```
 
-### Deploy to Vercel
+### Test Frontend
+Open http://localhost:3000 in browser
 
-```bash
-vercel deploy
-```
+## 📝 Development Workflow
 
-### Deploy to Netlify
+1. Start backend: `cd backend && npm run dev`
+2. Start frontend: `cd frontend && npm start`
+3. Make changes
+4. Test locally
+5. Commit and push
 
-```bash
-netlify deploy --prod
-```
+## 🔗 Integration
 
-**Important**: Add environment variables in your deployment platform!
+Frontend connects to backend via `REACT_APP_API_URL` environment variable.
 
-## 🔐 Security
+All API calls use Axios with base URL configuration.
 
-- Environment variables for sensitive data
-- Firebase security rules (see SETUP.md)
-- HTTPS only in production
-- API key authentication
-- Secure token handling
-- Input validation
+## 📄 Documentation
+
+- [Frontend README](./frontend/README.md)
+- [Backend README](./backend/README.md)
+- [Project Structure](./PROJECT_STRUCTURE.md)
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run linter and tests
-5. Submit a pull request
+2. Create feature branch
+3. Make changes
+4. Test thoroughly
+5. Submit pull request
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+MIT
 
 ## 🆘 Support
 
-- Check [SETUP.md](./SETUP.md) for setup issues
-- See [INTEGRATION_GUIDE.md](./INTEGRATION_GUIDE.md) for usage help
-- Review [QUICK_REFERENCE.md](./QUICK_REFERENCE.md) for quick tips
-- Open an issue for bugs or questions
-
-## 🎯 Roadmap
-
-- [x] Firebase authentication
-- [x] BrandsGateway integration
-- [x] Product catalog
-- [x] Shopping cart
-- [x] Order management
-- [ ] Payment integration (Stripe/PayPal)
-- [ ] User profile page
-- [ ] Order history
-- [ ] Product reviews
-- [ ] Admin dashboard
-
-## 🙏 Acknowledgments
-
-- [Firebase](https://firebase.google.com/) - Backend services
-- [BrandsGateway](https://www.brandsgateway.com/) - Luxury products API
-- [Shadcn UI](https://ui.shadcn.com/) - Beautiful components
-- [TanStack](https://tanstack.com/) - Router & Query
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
+For issues or questions:
+- Check documentation in frontend/backend folders
+- Open an issue on GitHub
+- Contact support
 
 ---
 
 **Built with ❤️ for luxury fashion enthusiasts**
 
-*Start selling luxury brands today! 🚀*
-# luxeholic1
-# luxeholic1
+*Start your luxury shopping experience today! 🚀*
