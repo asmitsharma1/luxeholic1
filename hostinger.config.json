@@ -1,0 +1,12 @@
+{
+  "build": {
+    "command": "npm run build",
+    "output": "dist/client"
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
