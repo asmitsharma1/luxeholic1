@@ -16,10 +16,16 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.0
         with:
           branch: gh-pages
-          folder: public
+          folder: dist/client
           clean: true
           token: ${{ secrets.GITHUB_TOKEN }}
